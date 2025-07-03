@@ -2,10 +2,12 @@ package com.E_BookShop_Springboot.adminportal.domain.security;
 
 import com.E_BookShop_Springboot.adminportal.domain.User;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import javax.management.relation.Role;
 
 @Entity
+@Data
 @Table(name = "user_role")
 public class UserRole {
 
@@ -18,14 +20,15 @@ public class UserRole {
     private User user;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="role_id")
+    @JoinColumn(name = "role_id")
     private Role role;
 
-    public UserRole(){}
+    public UserRole(User user1, com.E_BookShop_Springboot.adminportal.domain.security.Role role1) {
+    }
 
-    public UserRole(User user, Role role){
-        this.user=user;
-        this.role=role;
+    public UserRole(User user, Role role) {
+        this.user = user;
+        this.role = role;
     }
 
     public Long getUserRoleId() {
@@ -35,6 +38,7 @@ public class UserRole {
     public void setUserRoleId(Long userRoleId) {
         this.userRoleId = userRoleId;
     }
+
 
     public User getUser() {
         return user;
@@ -51,4 +55,6 @@ public class UserRole {
     public void setRole(Role role) {
         this.role = role;
     }
+
+
 }

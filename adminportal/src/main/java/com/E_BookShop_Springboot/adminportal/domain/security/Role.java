@@ -1,10 +1,13 @@
 package com.E_BookShop_Springboot.adminportal.domain.security;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.Getter;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
 @Entity
 public class Role {
 
@@ -12,7 +15,7 @@ public class Role {
     private int roleId;
     private String name;
 
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
     private Set<UserRole> userRoles = new HashSet<>();
 
     public int getRoleId() {
@@ -39,7 +42,6 @@ public class Role {
         this.userRoles = userRoles;
     }
 
-    public Role(Set<UserRole> userRoles) {
-        this.userRoles = userRoles;
-    }
+
+
 }
